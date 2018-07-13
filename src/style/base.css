@@ -1,0 +1,49 @@
+:root {
+  font-size: 18px;
+}
+
+* {
+  font-family: inherit;
+  box-sizing: inherit;
+  font-size: inherit;
+}
+
+html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: inherit;
+}
+
+h2 {
+  color: #707070;
+  font-size: 35px;
+  font-weight: normal;
+}
+
+
+p {
+  line-height: 1.5;
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
+.text_right {
+  text-align: right;
+}
+
+.mg_none {
+  margin: 0;
+}
+
+.p_text {
+  color: #707070;
+  text-align:  left;
+  margin-bottom: 0px;
+};

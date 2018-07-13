@@ -1,0 +1,20 @@
+{
+  "name": "hero",
+  "dataPoints": [
+    {
+      "color": "red",
+      "translate": "translate(2rem,2rem)",
+      "translateLight": "translate(2.2rem,1.85rem)"
+    },
+    {
+      "color": "blue",
+      "translate": "translate(3rem,3rem)",
+      "translateLight": "translate(3.2rem,2.85rem)"
+    },
+    {
+      "color": "green",
+      "translate": "translate(4rem,4rem)",
+      "translateLight": "translate(4.2rem,3.85rem)"
+    }
+  ]
+}
