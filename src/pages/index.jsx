@@ -31,9 +31,12 @@ query IndexPageQuery {
       node {
         name
         dataPoints {
+          namePoint
+          nameLine
           color
-          translate
-          translateLight
+          translateFrom
+          translateTo
+          timeTransform
         }
       }
     }

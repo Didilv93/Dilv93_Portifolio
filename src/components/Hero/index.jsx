@@ -2,6 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 import theme from '../../style/theme';
+import StyleContent from './pointAnimation'
 
 const colors = theme.colors;
 
@@ -19,52 +20,9 @@ const StyledHero = styled.section`
   }}
 `;
 
-const StyleContent = styled.div`
-  height: .15rem;
-  width: 100%;
-  position: absolute;
-  ${(props) => {
-    const { order } = props;
-    return css`
-      transform: rotate(-60deg);
-    `;
-  }}
-`;
-
-const StylePoint = styled.div`
-  width: .20rem;
-  height: .20rem;
-  border-radius: 10rem;
-
-  ${(props) => {
-    const { order } = props;
-    return css`
-      background-color: ${props.color};
-      transform: ${props.translate};
-    `;
-  }}
-`;
-
-const LightBeam = styled.div`
-  width: 100%;
-  height: .1rem;
-  opacity: .2;
-
-  ${(props) => {
-    const { order } = props;
-    return css`
-      background-color: ${colors.white};
-      transform: ${props.translateLight};
-    `;
-  }}
-`;
-
 const renderPoints = (props) => {
   return (
-    <StyleContent {...props} >
-      <StylePoint {...props} />
-      <LightBeam {...props} />
-    </StyleContent>
+    <StyleContent {...props} />
   );
 };
 
