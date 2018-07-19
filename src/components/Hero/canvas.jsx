@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {CanvasSpace, Create} from "pts" 
+import {CanvasSpace, Create} from "pts";
 
 import theme from '../../style/theme';
 
