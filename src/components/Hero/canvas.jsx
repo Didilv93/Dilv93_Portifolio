@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {CanvasSpace, Num, Rectangle, Triangle} from "pts" 
+import {CanvasSpace, Create} from "pts" 
 
 import theme from '../../style/theme';
 
@@ -11,9 +11,10 @@ export class App extends Component {
     const colors = theme.colors;
 
     var space = new CanvasSpace('#' + canvasID);
-    space.setup({ bgcolor: colors.primary });
+    space.setup({ bgcolor: colors.primary, retina: true, resize: true });
   
     var form = space.getForm();
+    var pts = undefined;
 
     this.renderChart = () => {
 
@@ -22,23 +23,22 @@ export class App extends Component {
     }
     
     space.add( (time, ftime) => {
-      // rectangle
-      var rect = Rectangle.fromCenter( space.center, space.size.$divide(2) );
-      var poly = Rectangle.corners( rect );
-      poly.shear2D( Num.cycle( time%5000/5000 ) - 0.5, space.center );
+
+      // would be better to init this in player's `start` function, but we are lazy here.
+      if (!pts) pts = Create.distributeRandom( space.innerBound, 100 );
+
+      let t = space.pointer;
+      pts.sort( (a,b) => a.$subtract(t).magnitudeSq() - b.$subtract(t).magnitudeSq() );
       
-      // triangle
-      var tris = poly.segments( 2, 1, true );
-      tris.map( (t) => t.push( space.pointer ) );
-      
-      // circle
-      var circles = tris.map( (t) => Triangle.incircle( t ) );
-      
-      // drawing
-      form.fillOnly("#123").polygon( poly );
-      form.fill("#f03").circles( circles );
-      form.strokeOnly("#fff ", 3 ).polygons( tris );
-      form.fill("#123").point( space.pointer, 5 );
+      form.fillOnly("#fff", 10);
+      pts.forEach( (p, i) => form.point( p, 5 - 5*i/pts.length, "circle" ) )
+
+      form.fillOnly("#fff").points( pts, 2, "circle" );
+
+      let three = pts.slice(0, 3);
+      let threeLines = three.map( (p) => [p, space.pointer] );
+      form.strokeOnly("#fff", 2).lines( threeLines );
+      form.fillOnly("#fff").points( three, 3, "circle" );
     });
 
     space.playOnce(Infinity).bindMouse().bindTouch();
