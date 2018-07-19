@@ -16,7 +16,7 @@ class IndexPage extends Component {
 
     return (
       <div>
-          <Hero allPoints={hero.dataPoints} />
+          <Hero />
       </div>
     );
   }
@@ -30,14 +30,6 @@ query IndexPageQuery {
     edges {
       node {
         name
-        dataPoints {
-          namePoint
-          nameLine
-          color
-          translateFrom
-          translateTo
-          timeTransform
-        }
       }
     }
   }

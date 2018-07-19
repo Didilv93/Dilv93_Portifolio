@@ -1,17 +1,14 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-import theme from '../../style/theme';
-import StyleContent from './pointAnimation'
-
-const colors = theme.colors;
+import CanvasAniamtion from './canvas';
 
 const StyledHero = styled.section`
   ${(props) => {
   const { minHeight } = props;
     return css`
       margin-top: 0;
-      background-color: ${colors.primary};
+      background-color: #A9A9A9;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -20,11 +17,6 @@ const StyledHero = styled.section`
   }}
 `;
 
-const renderPoints = (props) => {
-  return (
-    <StyleContent {...props} />
-  );
-};
 
 export class Hero extends React.Component {
   state = { minHeight: '100vh'}
@@ -37,8 +29,11 @@ export class Hero extends React.Component {
     const props = this.props
     const allPoints = props.allPoints;
     return (
-      <StyledHero minHeight={this.state.minHeight}>
-        {allPoints ? allPoints.map(pointDate => renderPoints(pointDate)) : ""}
+      <StyledHero 
+        minHeight={this.state.minHeight}
+        id="ptCanvas"
+      >
+        <CanvasAniamtion ID="ptCanvas"/>
       </StyledHero>
     );
   }
