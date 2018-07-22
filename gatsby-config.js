@@ -1,9 +1,9 @@
 module.exports = {
+  pathPrefix: "/reponame",
   siteMetadata: {
     title: 'Portfolio',
   },
   plugins: [
-    // 'gatsby-plugin-netlify-cms',
     'gatsby-plugin-sass',
     'gatsby-plugin-typography',
     'gatsby-plugin-react-helmet',
