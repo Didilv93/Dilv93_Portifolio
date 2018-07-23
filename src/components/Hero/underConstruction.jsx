@@ -134,7 +134,7 @@ export const component = (props) => {
                     name="contact"               
                     autoComplete="off"
                     method="POST"
-                    action="https://formspree.io"
+                    action=" https://formspree.io/diegossufmg@gmail.com "
                 >
                     <div>
                         <label>nome</label>
