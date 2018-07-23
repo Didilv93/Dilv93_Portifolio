@@ -1,14 +1,18 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+import theme from '../../style/theme';
 
-import CanvasAniamtion from './canvas';
+// import CanvasAniamtion from './canvas';
+import PageTemporary from './underConstruction'
+
+const colors = theme.colors;
 
 const StyledHero = styled.section`
   ${(props) => {
   const { minHeight } = props;
     return css`
       margin-top: 0;
-      background-color: #A9A9A9;
+      background-color: ${colors.primary};
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -33,7 +37,8 @@ export class Hero extends React.Component {
         minHeight={this.state.minHeight}
         id="ptCanvas"
       >
-        <CanvasAniamtion ID="ptCanvas"/>
+        {/* <CanvasAniamtion ID="ptCanvas"/> */}
+        <PageTemporary />
       </StyledHero>
     );
   }

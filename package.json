@@ -5,7 +5,7 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "babel-plugin-styled-components": "^1.5.1",
-    "gatsby": "^1.9.247",
+    "gatsby": "^1.9.277",
     "gatsby-link": "^1.6.40",
     "gatsby-plugin-netlify-cms": "^2.0.1",
     "gatsby-plugin-react-helmet": "^2.0.10",
@@ -29,10 +29,9 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "lint:es": "eslint --ignore-path .gitignore \"**/*.{js,jsx}\"",
-    "lint:style": "stylelint \"src/**/*.scss\"",
-    "lint": "yarn lint:es && yarn lint:style",
-    "format": "prettier-eslint --write \"**/*.{js,jsx,json,css,scss,md}\""
+    "format": "prettier --write 'src/**/*.js'",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public"
   },
   "devDependencies": {
     "gh-pages": "^1.2.0",
