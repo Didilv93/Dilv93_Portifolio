@@ -1,37 +1,19 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
+import React from 'react';
+import { graphql } from 'gatsby';
 
-import Hero from '../components/Hero/index';
+import HomeTemplate from '../templates/Home/HomeTemplate';
 
-class IndexPage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      headerFixed: false,
-    };
-  }
-
-  render() {
-    const { node: hero } = this.props.data.hero.edges[0];
-
-    return (
-      <div>
-          <Hero />
-      </div>
-    );
-  }
-}
+const IndexPage = ({ data }) => <HomeTemplate meta={data.site.siteMetadata} />
 
 export default IndexPage;
 
-export const query = graphql`
-query IndexPageQuery {
-  hero: allDataJson(filter: { name: { eq: "hero" } }) {
-    edges {
-      node {
-        name
+export const pageQuery = graphql`
+  query IndexQuery {
+    site {
+      siteMetadata {
+        title,
+        description,
       }
     }
   }
-}
 `;
