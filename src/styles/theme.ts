@@ -36,7 +36,7 @@ interface ITheme {
 
 export const theme: ITheme = {
   colors: {
-    primary: 'rgb(37, 41, 52)',
+    primary: '#000',
     success: '#3DC670',
     text: '#474747',
     heading: '#362e5c',

@@ -1,5 +1,4 @@
 import { Component } from 'react';
-// import {CanvasSpace, Create} from '../../utils/pts/pts.d.ts';
 import {CanvasSpace, Create} from 'pts';
 
 
@@ -33,14 +32,10 @@ export class App extends Component {
       pts.sort( (a,b) => a.$subtract(t).magnitudeSq() - b.$subtract(t).magnitudeSq() );
 
       form.fillOnly("#fff", 10);
-      pts.forEach( (p, i) => form.point( p, 5 - 5*i/pts.length, "circle" ) )
+      pts.forEach( (p, i) => form.point( p, 2 - 2*i/pts.length, "circle" ) )
 
-      form.fillOnly("#fff").points( pts, 2, "circle" );
+      form.fillOnly("#fff").points( pts, 1, "circle" );
 
-      let three = pts.slice(0, 3);
-      let threeLines = three.map( (p) => [p, space.pointer] );
-      form.strokeOnly("#fff", 2).lines( threeLines );
-      form.fillOnly("#fff").points( three, 3, "circle" );
     });
 
     space.playOnce(Infinity).bindMouse().bindTouch();
