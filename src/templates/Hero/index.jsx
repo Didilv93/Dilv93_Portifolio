@@ -2,8 +2,8 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import theme from '../../styles/theme';
 
-// import CanvasAniamtion from './canvas';
-import PageTemporary from './underConstruction'
+import CanvasAniamtion from './canvas';
+// import PageTemporary from './underConstruction'
 
 const colors = theme.colors;
 
@@ -30,15 +30,14 @@ export class Hero extends React.Component {
     })
   }
   render() {
-    // const props = this.props
-    // const allPoints = props.allPoints;
+
     return (
       <StyledHero
         minHeight={this.state.minHeight}
         id="ptCanvas"
       >
-        {/* <CanvasAniamtion ID="ptCanvas"/> */}
-        <PageTemporary />
+        <CanvasAniamtion ID="ptCanvas"/>
+        {/* <PageTemporary /> */}
       </StyledHero>
     );
   }

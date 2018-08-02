@@ -1,27 +1,29 @@
-import React, { Component } from 'react';
-import {CanvasSpace, Create} from "pts";
+import { Component } from 'react';
+// import {CanvasSpace, Create} from '../../utils/pts/pts.d.ts';
+import {CanvasSpace, Create} from 'pts';
+
 
 import theme from '../../styles/theme';
+
+const colors = theme.colors;
+let space;
 
 export class App extends Component {
 
   createApp() {
-    
-    const canvasID = this.props.ID;
-    const colors = theme.colors;
 
-    var space = new CanvasSpace('#' + canvasID);
+    space = new CanvasSpace('#' + this.props.ID);
     space.setup({ bgcolor: colors.primary, retina: true, resize: true });
-  
-    var form = space.getForm();
-    var pts = undefined;
+
+    let form = space.getForm();
+    let pts = undefined;
 
     this.renderChart = () => {
 
       // Given the data, distribute bars across the space's size
 
     }
-    
+
     space.add( (time, ftime) => {
 
       // would be better to init this in player's `start` function, but we are lazy here.
@@ -29,7 +31,7 @@ export class App extends Component {
 
       let t = space.pointer;
       pts.sort( (a,b) => a.$subtract(t).magnitudeSq() - b.$subtract(t).magnitudeSq() );
-      
+
       form.fillOnly("#fff", 10);
       pts.forEach( (p, i) => form.point( p, 5 - 5*i/pts.length, "circle" ) )
 
@@ -42,7 +44,8 @@ export class App extends Component {
     });
 
     space.playOnce(Infinity).bindMouse().bindTouch();
-  
+    if (window.registerDemo) window.registerDemo(this.props.ID, space);
+
   }
 
   // Create chart on mount
@@ -54,9 +57,8 @@ export class App extends Component {
   componentDidUpdate() {
 
   }
-  
+
   render() {
-    if (window.registerDemo) window.registerDemo(canvasID, space);
     return null;
   }
 }
