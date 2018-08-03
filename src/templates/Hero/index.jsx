@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import theme from '../../styles/theme';
 
 import CanvasAniamtion from './canvas';
-// import PageTemporary from './underConstruction'
+import PageTemporary from './underConstruction'
 
 const colors = theme.colors;
 
@@ -37,7 +37,7 @@ export class Hero extends React.Component {
         id="ptCanvas"
       >
         <CanvasAniamtion ID="ptCanvas"/>
-        {/* <PageTemporary /> */}
+        <PageTemporary />
       </StyledHero>
     );
   }

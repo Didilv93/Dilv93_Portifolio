@@ -6,7 +6,8 @@ import Img3 from '../../images/Social/img3.png';
 import Img4 from '../../images/Social/img4.png';
 
 const PageContent = styled.div`
-    margin: auto;
+    position: absolute;
+    align-self: center;
 `;
 
 const TextContent = styled.div`
@@ -55,51 +56,6 @@ const Contenedor = styled.div`
     }
 `;
 
-const Form = styled.form`
-    font-size: 0.9rem;
-    margin-top: 5rem;
-    div {
-        margin-bottom: .5rem;
-
-        label {
-            position: relative;
-            display: flex;
-            margin-bottom: .3rem;
-            color: #fff;
-            font-size: 18px;
-        }
-        input, textarea {
-            font-size: inherit;
-            margin: 0rem;
-            width: 100%;
-            border: .1em solid transparentize(red, .5);
-            border-radius: .15em;
-            padding: .3rem .25rem;
-        }
-        textarea {
-            height: 5rem;
-            resize: vertical;
-        }
-    }
-    button {
-        margin-top: .5rem;
-        margin-bottom: 0rem;
-        height: 30px;
-        width: 80px;
-        font-weight: bolder;
-        background-color: #2F4F4F;
-        color: #F0FFFF;
-        border: none;
-        border-radius: 2px;
-        opacity: .8;
-        cursor: pointer;
-        :hover {
-            opacity: 1;
-        }
-    }
-`;
-
-
 export const component = (props) => {
     return (
         <PageContent>
@@ -134,28 +90,6 @@ export const component = (props) => {
                         </Contenedor>
                     </a>
                 </div>
-                <Form
-                    name="contact"
-                    autoComplete="off"
-                    method="POST"
-                    action=" https://formspree.io/diegossufmg@gmail.com "
-                >
-                    <div>
-                        <label>nome</label>
-                        <input type="text" id="nome" name="nome"/>
-                    </div>
-                    <div>
-                        <label>email</label>
-                        <input type="email" id="email" name="email" />
-                    </div>
-                    <div>
-                        <label>mensagem</label>
-                        <textarea id="mensagem" name="mensagem"></textarea>
-                    </div>
-                    <p>
-                        <button type="submit">ENVIAR</button>
-                    </p>
-            </Form>
             </Contact>
         </PageContent>
     );

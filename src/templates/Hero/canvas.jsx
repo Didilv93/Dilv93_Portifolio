@@ -61,11 +61,6 @@ export class App extends Component {
     this.createApp();
   }
 
-  // When data is updated, re-render by playing animate() once
-  componentDidUpdate() {
-
-  }
-
   render() {
     return null;
   }
