@@ -1,17 +1,18 @@
 import { Component } from 'react';
-import {CanvasSpace, Line, Pt, Const, Group} from 'pts';
+import {CanvasSpace, Line, Pt, Group} from 'pts';
 
 
 import theme from '../../styles/theme';
 
 const colors = theme.colors;
+const galaxyStyle = theme.heroGalaxy;
 
 
 export class App extends Component {
 
   createApp() {
 
-    var space = new CanvasSpace('#' + this.props.ID).setup({bgcolor: "#000", resize: true, retina: true});
+    var space = new CanvasSpace('#' + this.props.ID).setup({bgcolor: colors.primary, resize: true, retina: true});
     var form = space.getForm();
 
     //// Demo code ---
@@ -36,18 +37,18 @@ export class App extends Component {
 
           // rotate each line by 0.1 degree and check collinearity with pointer
           let ln = pairs[i];
-          ln.rotate2D( Const.one_degree/30, space.center );
+          ln.rotate2D( 0.0005, space.center );
           let collinear = Line.collinear( ln[0], ln[1], space.pointer, 10);
-  
+
           if (collinear) {
-            form.stroke(colors.brightWhite).line(ln);
-  
+            form.stroke(galaxyStyle.brightWhite).line(ln);
+
           } else {
             // if not collinear, color the line based on whether the pointer is on left or right side
             let side = Line.sideOfPt2D( ln, space.center );
-            form.stroke( (side>0) ? colors.brightWhite : colors.brightBlue ).line( ln );
+            form.stroke( (side>0) ? galaxyStyle.brightWhite : galaxyStyle.brightBlue ).line( ln );
           }
-          form.fillOnly(colors.brightStars).points( ln, 0.5);
+          form.fillOnly(galaxyStyle.brightStars).points( ln, 0.5);
         }
       }
     });
