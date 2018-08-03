@@ -53,7 +53,7 @@ export const theme: ITheme = {
   },
 
   heroGalaxy: {
-    brightWhite: 'rgba(255,255,255,0.2)',
+    brightWhite: 'rgba(255,255,255,0.1)',
     brightBlue: 'rgba(51,102,204,.1)',
     brightStars:'rgba(255,255,255,0.8',
   },
