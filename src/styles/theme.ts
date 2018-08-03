@@ -6,6 +6,9 @@ interface IThemeColors {
   greyLight: string;
   greyBluish: string;
   greyMed: string;
+  brightWhite: string;
+  brightBlue: string;
+  brightStars: string;
 }
 
 interface IThemeBoxShadow {
@@ -43,7 +46,11 @@ export const theme: ITheme = {
     greyLight: '#f1f1f1',
     greyBluish: '#dfe6e9',
     greyMed: '#636e72',
+    brightWhite: 'rgba(255,255,255,0.2)',
+    brightBlue: 'rgba(51,102,204,.1)',
+    brightStars:'rgba(255,255,255,0.8',
   },
+
   boxShadow: {
     default: '0 4px 4px rgba(0,0,0,.24)',
     low: '0 2px 2px rgba(0,0,0,.16)',

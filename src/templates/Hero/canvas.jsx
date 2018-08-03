@@ -1,59 +1,58 @@
 import { Component } from 'react';
-import {CanvasSpace, Create, Line} from 'pts';
+import {CanvasSpace, Line, Pt, Const, Group} from 'pts';
 
 
 import theme from '../../styles/theme';
 
 const colors = theme.colors;
-let space;
+
 
 export class App extends Component {
 
   createApp() {
 
-    space = new CanvasSpace('#' + this.props.ID);
-    space.setup({ bgcolor: colors.primary, retina: true, resize: true });
+    var space = new CanvasSpace('#' + this.props.ID).setup({bgcolor: "#000", resize: true, retina: true});
+    var form = space.getForm();
 
-    const layerNumber = 100;
-    let form = space.getForm();
-    let pts = [layerNumber];
-    let ptCenter = undefined;
-    let count = window.innerWidth * 0.01/layerNumber;
-    let i;
+    //// Demo code ---
 
-    if (count < 100/layerNumber) count = 100/layerNumber;
+    var pairs = [];
 
-    for (i = 0; i < layerNumber; i++) pts[i] = undefined;
+    space.add({
 
-    space.add( () => {
+      start:() => {
+        let r = space.size.minValue().value;
 
-      let center = space.center;
-      // would be better to init this in player's `start` function, but we are lazy here.
-      for (i = 0; i < layerNumber; i++) if (!pts[i])
-        pts[i] = Create.distributeRandom( space.innerBound, count );
+        // create 200 lines
+        for (let i=0; i<200; i++) {
+          let ln = new Group( Pt.make(2, r, true), space.pointer );
+          ln.moveBy( space.center ).rotate2D( i*Math.PI/100, space.center );
+          pairs.push(ln );
+        }
+      },
+      animate: (time, ftime) => {
 
-      if (!ptCenter) ptCenter = Create.distributeLinear( space.innerBound, 1 );
+        for (let i=0, len=pairs.length; i<len; i++) {
 
-      let perpends = [];
-      for(i = 1; i < layerNumber; i++) {
-        perpends[i] = pts[i].map( (p) => [p, Line.perpendicularFromPt( ptCenter, center )] );
+          // rotate each line by 0.1 degree and check collinearity with pointer
+          let ln = pairs[i];
+          ln.rotate2D( Const.one_degree/30, space.center );
+          let collinear = Line.collinear( ln[0], ln[1], space.pointer, 10);
+  
+          if (collinear) {
+            form.stroke(colors.brightWhite).line(ln);
+  
+          } else {
+            // if not collinear, color the line based on whether the pointer is on left or right side
+            let side = Line.sideOfPt2D( ln, space.center );
+            form.stroke( (side>0) ? colors.brightWhite : colors.brightBlue ).line( ln );
+          }
+          form.fillOnly(colors.brightStars).points( ln, 0.5);
+        }
       }
-
-      for (i = 0; i < layerNumber; i++) {
-        form.strokeOnly("rgba(255, 255, 255, 1)", 0.1).lines( perpends[i] );
-      }
-
-      for (i = 0; i < layerNumber; i++){
-        form.fillOnly("#fff").points( pts[i], 0.5, "circle" );
-      }
-
-      for (i = 0; i < layerNumber; i++) pts[i].rotate2D( 8*(i + 1)/1000000,center);
-
     });
-
-    space.playOnce(Infinity).bindMouse().bindTouch();
-    if (window.registerDemo) window.registerDemo(this.props.ID, space);
-
+    //// ----
+    space.bindMouse().bindTouch().play();
   }
 
   // Create chart on mount
