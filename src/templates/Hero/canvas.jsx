@@ -14,36 +14,45 @@ export class App extends Component {
     space = new CanvasSpace('#' + this.props.ID);
     space.setup({ bgcolor: colors.primary, retina: true, resize: true });
 
+    const layerNumber = 10;
     let form = space.getForm();
-    let pts = undefined;
+    let pts = [layerNumber];
     let ptCenter = undefined;
-    let count = window.innerWidth * 0.1;
+    let count = window.innerWidth * 0.01/layerNumber;
+    let i;
 
-    if (count < 100) count = 100;
+    if (count < 100/layerNumber) count = 100/layerNumber;
 
-    this.renderChart = () => {
-
-      // Given the data, distribute bars across the space's size
-
-    }
+    for (i = 0; i < layerNumber; i++) pts[i] = undefined;
 
     space.add( () => {
 
       let center = space.center;
       // would be better to init this in player's `start` function, but we are lazy here.
-      if (!pts) pts = Create.distributeRandom( space.innerBound, count );
+      for (i = 0; i < layerNumber; i++) if (!pts[i]) pts[i] = Create.distributeRandom( space.innerBound, count );
+
       if (!ptCenter) ptCenter = Create.distributeLinear( space.innerBound, 1 );
 
-      let perpends = pts.map( (p) => [p, Line.perpendicularFromPt( ptCenter, center )] );
+      let perpends = [];
+      perpends[9] = pts[9].map( (p) => [p, Line.perpendicularFromPt( ptCenter, center )] );
+      perpends[8] = pts[8].map( (p) => [p, Line.perpendicularFromPt( ptCenter, center )] );
+      perpends[7] = pts[7].map( (p) => [p, Line.perpendicularFromPt( ptCenter, center )] );
+      perpends[6] = pts[6].map( (p) => [p, Line.perpendicularFromPt( ptCenter, center )] );
+      perpends[5] = pts[5].map( (p) => [p, Line.perpendicularFromPt( ptCenter, center )] );
+      perpends[4] = pts[4].map( (p) => [p, Line.perpendicularFromPt( ptCenter, center )] );
+      perpends[3] = pts[3].map( (p) => [p, Line.perpendicularFromPt( ptCenter, center )] );
+      perpends[2] = pts[2].map( (p) => [p, Line.perpendicularFromPt( ptCenter, center )] );
+      perpends[1] = pts[1].map( (p) => [p, Line.perpendicularFromPt( ptCenter, center )] );
+      perpends[0] = pts[0].map( (p) => [p, Line.perpendicularFromPt( ptCenter, center )] );
 
       let t = space.pointer;
-      pts.sort( (a,b) => a.$subtract(t).magnitudeSq() - b.$subtract(t).magnitudeSq() );
+      for (i = 0; i < layerNumber; i++) pts[i].sort( (a,b) => a.$subtract(t).magnitudeSq() - b.$subtract(t).magnitudeSq() );
 
-      form.strokeOnly("#fff", 0.1).lines( perpends );
+      for (i = 0; i < layerNumber; i++) form.strokeOnly("#fff", 0.1).lines( perpends[i] );
       form.fillOnly("#fff", count);
-      form.fillOnly("#fff").points( pts, 0.5, "circle" );
+      for (i = 0; i < layerNumber; i++) form.fillOnly("#fff").points( pts[i], 0.5, "circle" );
 
-      pts.rotate2D( 0.0005, center);
+      for (i = 0; i < layerNumber; i++) pts[i].rotate2D( 0.00005* i, center);
 
     });
 
