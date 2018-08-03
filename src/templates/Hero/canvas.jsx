@@ -35,13 +35,8 @@ export class App extends Component {
       if (!ptCenter) ptCenter = Create.distributeLinear( space.innerBound, 1 );
 
       let perpends = [];
-      for(i = 1; i < layerNumber; i = i+2) {
+      for(i = 1; i < layerNumber; i++) {
         perpends[i] = pts[i].map( (p) => [p, Line.perpendicularFromPt( ptCenter, center )] );
-      }
-
-      let t = space.pointer;
-      for (i = 0; i < layerNumber; i++) {
-        pts.forEach(() => pts[i].sort( (a,b) => a.$subtract(t).magnitudeSq() - b.$subtract(t).magnitudeSq() ));
       }
 
       for (i = 0; i < layerNumber; i++) {
