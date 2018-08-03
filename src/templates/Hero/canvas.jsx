@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import {CanvasSpace, Create} from 'pts';
+import {CanvasSpace, Create, Line} from 'pts';
 
 
 import theme from '../../styles/theme';
@@ -16,6 +16,10 @@ export class App extends Component {
 
     let form = space.getForm();
     let pts = undefined;
+    let ptCenter = undefined;
+    let count = window.innerWidth * 0.1;
+
+    if (count < 100) count = 100;
 
     this.renderChart = () => {
 
@@ -23,18 +27,23 @@ export class App extends Component {
 
     }
 
-    space.add( (time, ftime) => {
+    space.add( () => {
 
+      let center = space.center;
       // would be better to init this in player's `start` function, but we are lazy here.
-      if (!pts) pts = Create.distributeRandom( space.innerBound, 100 );
+      if (!pts) pts = Create.distributeRandom( space.innerBound, count );
+      if (!ptCenter) ptCenter = Create.distributeLinear( space.innerBound, 1 );
+
+      let perpends = pts.map( (p) => [p, Line.perpendicularFromPt( ptCenter, center )] );
 
       let t = space.pointer;
       pts.sort( (a,b) => a.$subtract(t).magnitudeSq() - b.$subtract(t).magnitudeSq() );
 
-      form.fillOnly("#fff", 10);
-      pts.forEach( (p, i) => form.point( p, 2 - 2*i/pts.length, "circle" ) )
+      form.strokeOnly("#fff", 0.1).lines( perpends );
+      form.fillOnly("#fff", count);
+      form.fillOnly("#fff").points( pts, 0.5, "circle" );
 
-      form.fillOnly("#fff").points( pts, 1, "circle" );
+      pts.rotate2D( 0.0005, center);
 
     });
 
