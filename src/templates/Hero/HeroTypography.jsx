@@ -4,9 +4,9 @@ import styled from 'styled-components';
 const PageContent = styled.div`
     position: absolute;
     padding: 1rem;
-    width: 750px;
     margin-top: 40vh;
-    margin-left: 10vw;
+    margin-left: 10%;
+    width: 90%;
     pointer-events: none;
     p {
         margin: 0;
@@ -14,6 +14,19 @@ const PageContent = styled.div`
         color: #fff;
         font-size: 45px;
         line-height: 3rem;
+    }
+    @media only screen and (max-width:800px){
+        margin-top: 50vh;
+        p {
+            font-size: 35px;
+            line-height: 1.5rem;
+        }
+    }
+
+    @media only screen and (max-width:800px){
+        p {
+            font-size: 20px;
+        }
     }
     .lineStyle{
         opacity: 0;
@@ -81,6 +94,7 @@ class component extends React.Component {
                     <span className='word pomegranate'>backend.</span>
                     <span className='word green'>designer.</span>
                 </DinamicTitleStyle>
+                <p className='lineStyle'>Site em construção...</p>
             </PageContent>
         );
     };
