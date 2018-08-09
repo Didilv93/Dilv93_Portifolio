@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: 'Kaordica\'s Gatsby Starter',
+    title: 'Web developer',
     description: 'Your fallback meta description',
     siteUrl: 'https://your-url.com',
   },

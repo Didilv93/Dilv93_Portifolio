@@ -2,8 +2,9 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import theme from '../../styles/theme';
 
-import CanvasAniamtion from './canvas';
-import PageTemporary from './underConstruction'
+import Typography from './HeroTypography';
+import Canvas from './canvas';
+import MotionStyle from '../../utils/UI/Movement/Typography/index';
 
 const colors = theme.colors;
 
@@ -28,16 +29,17 @@ export class Hero extends React.Component {
     this.setState({
       minHeight: `${window.innerHeight}px` || '100vh',
     })
+    Canvas('ptCanvas');
+    MotionStyle();
   }
   render() {
 
     return (
       <StyledHero
         minHeight={this.state.minHeight}
-        id="ptCanvas"
+        id='ptCanvas'
       >
-        <CanvasAniamtion ID="ptCanvas"/>
-        <PageTemporary />
+        <Typography/>
       </StyledHero>
     );
   }

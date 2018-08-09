@@ -8,12 +8,6 @@ interface IThemeColors {
   greyMed: string;
 }
 
-interface IThemeHeroGalaxy {
-  brightWhite: string;
-  brightBlue: string;
-  brightStars: string;
-}
-
 interface IThemeBoxShadow {
   default: string;
   low: string;
@@ -35,7 +29,6 @@ interface IThemeMaxContainer {
 
 interface ITheme {
   colors: IThemeColors;
-  heroGalaxy: IThemeHeroGalaxy;
   boxShadow: IThemeBoxShadow;
   transitions: IThemeTransitions;
   maxContainer: IThemeMaxContainer;
@@ -50,12 +43,6 @@ export const theme: ITheme = {
     greyLight: '#f1f1f1',
     greyBluish: '#dfe6e9',
     greyMed: '#636e72',
-  },
-
-  heroGalaxy: {
-    brightWhite: 'rgba(255,255,255,0.1)',
-    brightBlue: 'rgba(51,102,204,.1)',
-    brightStars:'rgba(255,255,255,0.8',
   },
 
   boxShadow: {
