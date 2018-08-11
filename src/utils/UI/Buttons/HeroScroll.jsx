@@ -33,7 +33,7 @@ const SpanStyle = styled.div`
 `;
 
 const Arrow = styled.div`
-  animation: iconFloat 4s ease-in-out infinite;
+  animation: iconFloat 4s ease-in-out infinite .4s;
   .hoverBar {
     background-color: rgb(0,102,204);
     opacity: 0;
