@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: 'Web developer',
+    title: 'Portfólio - Web developer',
     description: 'Your fallback meta description',
     siteUrl: 'https://your-url.com',
   },

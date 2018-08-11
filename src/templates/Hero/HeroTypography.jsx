@@ -23,7 +23,7 @@ const PageContent = styled.div`
         }
     }
 
-    @media only screen and (max-width:800px){
+    @media only screen and (max-width:500px){
         p {
             font-size: 20px;
         }
@@ -79,6 +79,9 @@ const DinamicTitleStyle = styled.p`
     .midnight {
         color: #2c3e50;
     }
+    .yellow {
+        color: #FFFF00;
+    }
 `;
 
 class component extends React.Component {
@@ -93,8 +96,9 @@ class component extends React.Component {
                     <span className='word belize'>frontend.</span>
                     <span className='word pomegranate'>backend.</span>
                     <span className='word green'>designer.</span>
+                    <span className='word yellow'>software.</span>
                 </DinamicTitleStyle>
-                <p className='lineStyle'>Site em construção...</p>
+                <p style={{fontSize:'14px'}} className='lineStyle'>Em construção...</p>
             </PageContent>
         );
     };

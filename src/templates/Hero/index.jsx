@@ -4,7 +4,8 @@ import theme from '../../styles/theme';
 
 import Typography from './HeroTypography';
 import Canvas from './canvas';
-import MotionStyle from '../../utils/UI/Movement/Typography/index';
+import Button from '../../utils/UI/Buttons/HeroScroll';
+import TypographyMotion from '../../utils/UI/Movement/Typography/index';
 
 const colors = theme.colors;
 
@@ -21,8 +22,11 @@ const StyledHero = styled.section`
     `;
   }}
 `;
-
-
+const ButtonStyle = styled.section`
+  position: absolute;
+  top: 80vh;
+  left: 80vw;
+`;
 export class Hero extends React.Component {
   state = { minHeight: '100vh'}
   componentDidMount = () => {
@@ -30,7 +34,7 @@ export class Hero extends React.Component {
       minHeight: `${window.innerHeight}px` || '100vh',
     })
     Canvas('ptCanvas');
-    MotionStyle();
+    TypographyMotion();
   }
   render() {
 
@@ -40,6 +44,9 @@ export class Hero extends React.Component {
         id='ptCanvas'
       >
         <Typography/>
+        <ButtonStyle>
+          <Button />
+        </ButtonStyle>
       </StyledHero>
     );
   }

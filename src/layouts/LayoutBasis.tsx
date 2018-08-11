@@ -20,7 +20,7 @@ const LayoutBasis = ({ children }: any) => (
     render={data => (
       <>
         <Helmet>
-          <title id='titlePage' >{data.site.siteMetadata.title}</title>
+          <title>{data.site.siteMetadata.title}</title>
           <meta name="description" content={data.site.siteMetadata.description} />
           <link rel="icon" type="image/png" sizes="64x64" href={favicon} />
         </Helmet>
