@@ -61,7 +61,7 @@ export class App extends React.Component {
     return (
       <ButtonContent>
         <ButtonStyle>
-          <SpanStyle><span>scroll</span></SpanStyle>
+          <SpanStyle><span>Scroll</span></SpanStyle>
           <Arrow>
             <ArrowLeft className='hoverBar'/>
             <ArrowRight className='hoverBar'/>
