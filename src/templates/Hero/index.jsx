@@ -26,6 +26,8 @@ const ButtonStyle = styled.section`
   position: absolute;
   top: 80vh;
   left: 80vw;
+  opacity: 0;
+  transition: opacity 4s;
   @media only screen and (max-width:500px){
     top: 70vh;
   }
@@ -47,7 +49,7 @@ export class Hero extends React.Component {
         id='ptCanvas'
       >
         <Typography/>
-        <ButtonStyle>
+        <ButtonStyle className='scrollButonHero'>
           <Button />
         </ButtonStyle>
       </StyledHero>
