@@ -24,6 +24,7 @@ const PageContent = styled.div`
     }
 
     @media only screen and (max-width:500px){
+        margin-top: 40vh;
         p {
             font-size: 20px;
         }

@@ -26,6 +26,9 @@ const ButtonStyle = styled.section`
   position: absolute;
   top: 80vh;
   left: 80vw;
+  @media only screen and (max-width:500px){
+    top: 70vh;
+  }
 `;
 export class Hero extends React.Component {
   state = { minHeight: '100vh'}
