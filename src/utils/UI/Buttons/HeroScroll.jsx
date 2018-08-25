@@ -8,9 +8,9 @@ const colors = theme.colors;
 const ButtonStyle = styled.button`
   cursor: pointer;
   border: none;
-  background-color: transparent;
+  background: none;
   outline: none;
-  width: 50px;
+  width: 60px;
   height: 80px;
   :hover {
     .hoverBar {
