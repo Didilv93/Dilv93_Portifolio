@@ -12,7 +12,6 @@ const StyledAboutSection = styled.section`
   const { minHeight } = props;
     return css`
       margin-top: 0;
-      display: flex;
       flex-direction: column;
       min-height: ${minHeight};
     `;
@@ -24,32 +23,6 @@ const Content = styled.div`
     display: flex;
     flex-direction: row;
 `;
-
-const StyledTitle = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin-top: 2rem;
-  p {
-    position: absolute;
-    text-align: center;
-    font-size: 35px;
-    color: ${colors.secondary};
-  }
-`;
-
-const StyledText = styled.div`
-  width: 600px;
-  height: 200px;
-  p {
-    max-width: 50ch;
-    color: ${colors.white};
-  }
-`;
-
-// const ImageStyle = styled.div`
-//   max-width: 800px;
-//   margin-left: auto;
-// `;
 
 export class AboutSection extends React.Component {
   constructor(props, context) {
@@ -78,13 +51,7 @@ export class AboutSection extends React.Component {
       <StyledAboutSection
         minHeight={this.state.minHeight}
       >
-        <StyledTitle>
-          <p></p>
-        </StyledTitle>
         <Content>
-          <StyledText>
-            <p></p>
-          </StyledText>
         </Content>
       </StyledAboutSection>
     );
