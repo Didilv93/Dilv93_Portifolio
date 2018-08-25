@@ -26,7 +26,7 @@ const ButtonStyle = styled.button`
 
 const SpanStyle = styled.div`
   margin-bottom: 12px;
-  margin-left: -3px;
+  margin-left: -10px;
   animation: iconFloat 4s ease-in-out infinite;
   span {
   color: ${colors.secondary};
