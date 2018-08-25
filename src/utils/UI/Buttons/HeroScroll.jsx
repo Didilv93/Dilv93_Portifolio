@@ -1,14 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-
-const ButtonContent = styled.div`
-  @keyframes iconFloat {
-    0%   {transform: translateY(0px)}
-    50%   {transform: translateY(10px)}
-    100% {transform: translateY(0px)}
-  }
-`;
 const ButtonStyle = styled.button`
   cursor: pointer;
   border: none;
@@ -20,6 +12,11 @@ const ButtonStyle = styled.button`
     .hoverBar {
       opacity: 1;
     }
+  }
+  @keyframes iconFloat {
+    0%   {transform: translateY(0px)}
+    50%   {transform: translateY(10px)}
+    100% {transform: translateY(0px)}
   }
 `;
 
@@ -56,24 +53,20 @@ const ArrowRight = styled.div`
   transform: translate(13.54505px, -3px) rotate(-45deg);
 `;
 
-export class App extends React.Component {
-  render(){
-    return (
-      <ButtonContent>
-        <ButtonStyle>
-          <SpanStyle><span>Scroll</span></SpanStyle>
-          <Arrow>
-            <ArrowLeft className='hoverBar'/>
-            <ArrowRight className='hoverBar'/>
-            <ArrowLeft className='fixedBar'/>
-            <ArrowRight className='fixedBar'/>
-            <ArrowLeft className='hoverBar'/>
-            <ArrowRight className='hoverBar'/>
-          </Arrow>
-        </ButtonStyle>
-      </ButtonContent>
-    );
-  };
+export const Component = (props) => {
+  return (
+    <ButtonStyle onClick={props.action}>
+      <SpanStyle><span>Scroll</span></SpanStyle>
+      <Arrow>
+        <ArrowLeft className='hoverBar'/>
+        <ArrowRight className='hoverBar'/>
+        <ArrowLeft className='fixedBar'/>
+        <ArrowRight className='fixedBar'/>
+        <ArrowLeft className='hoverBar'/>
+        <ArrowRight className='hoverBar'/>
+      </Arrow>
+    </ButtonStyle>
+  );
 };
 
-export default App;
+export default Component;
