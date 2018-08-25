@@ -5,7 +5,7 @@ import theme from '../../styles/theme';
 const colors = theme.colors;
 const galaxyStyle = {
   brightWhite: 'rgba(255,255,255,',
-  brightBlue: 'rgba(0,102,204,',
+  brightBlue: 'rgba(0,50,204,',
   brightStars:'rgba(255,255,255,',
 }
 
@@ -13,7 +13,7 @@ export function App (ID) {
 
   function createApp() {
 
-    let space = new CanvasSpace('#' + ID).setup({bgcolor: colors.primary, resize: true, retina: true});
+    let space = new CanvasSpace('#' + ID).setup({bgcolor: 'transparent', resize: true, retina: true});
     let form = space.getForm();
 
     //// Demo code ---

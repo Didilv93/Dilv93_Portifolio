@@ -2,12 +2,13 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 import theme from '../../styles/theme';
-// import Image from '../../images/profile/IMG.png';
+import Image from '../../images/profile/IMG.png';
 
 const colors = theme.colors;
 
 const StyledAboutSection = styled.section`
-  background-color: rgb(2,5,26);
+  background-color: ${colors.primary};
+  background-image: linear-gradient(${colors.primary}, rgb(0,0,30));
   ${(props) => {
   const { minHeight } = props;
     return css`
@@ -21,7 +22,7 @@ const StyledAboutSection = styled.section`
 const Content = styled.div`
     margin: auto;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 `;
 
 export class AboutSection extends React.Component {
@@ -52,6 +53,8 @@ export class AboutSection extends React.Component {
         minHeight={this.state.minHeight}
       >
         <Content>
+          <h1>Sobre mim</h1>
+          <p>Texto de descrição</p>
         </Content>
       </StyledAboutSection>
     );

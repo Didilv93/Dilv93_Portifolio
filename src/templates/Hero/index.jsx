@@ -15,6 +15,7 @@ const StyledHero = styled.section`
     return css`
       margin-top: 0;
       background-color: ${colors.primary};
+      background-image: radial-gradient(rgb(0,0,20), rgba(26, 0, 19, 0.5), rgb(0,0,0), rgb(0,0,2));
       display: flex;
       flex-direction: column;
       justify-content: space-between;
