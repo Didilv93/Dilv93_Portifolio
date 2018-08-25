@@ -1,8 +1,10 @@
 interface IThemeColors {
   primary: string;
+  secondary: string;
   success: string;
   text: string;
   heading: string;
+  white: string;
   greyLight: string;
   greyBluish: string;
   greyMed: string;
@@ -36,10 +38,12 @@ interface ITheme {
 
 export const theme: ITheme = {
   colors: {
-    primary: 'rgb(0, 0, 4)',
+    primary: 'rgb(0,0,4)',
+    secondary: 'rgb(0,102,204)',
     success: '#3DC670',
     text: '#474747',
     heading: '#362e5c',
+    white: 'rgb(255,255,255)',
     greyLight: '#f1f1f1',
     greyBluish: '#dfe6e9',
     greyMed: '#636e72',

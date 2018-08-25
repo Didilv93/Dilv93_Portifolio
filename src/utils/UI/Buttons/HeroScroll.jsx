@@ -1,6 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import theme from '../../../styles/theme';
+
+const colors = theme.colors;
+
 const ButtonStyle = styled.button`
   cursor: pointer;
   border: none;
@@ -25,19 +29,19 @@ const SpanStyle = styled.div`
   margin-left: -3px;
   animation: iconFloat 4s ease-in-out infinite;
   span {
-    color: rgb(0,102,204);
+  color: ${colors.secondary};
   }
 `;
 
 const Arrow = styled.div`
   animation: iconFloat 4s ease-in-out infinite .4s;
   .hoverBar {
-    background-color: rgb(0,102,204);
+    background-color: ${colors.secondary};
     opacity: 0;
     transition: opacity 1s;
   }
   .fixedBar{
-    background-color: rgb(255,255,255);
+  background-color: ${colors.white};
   }
 `;
 

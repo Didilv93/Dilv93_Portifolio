@@ -14,7 +14,7 @@ const Container = styled.main`
 export const BasicLayout: React.SFC<IBasicLayoutProps> = props => {
   return (
     <LayoutBasis>
-      <Container>{props.children}</Container>
+      <Container id='layoutBasis'>{props.children}</Container>
     </LayoutBasis>
   );
 };

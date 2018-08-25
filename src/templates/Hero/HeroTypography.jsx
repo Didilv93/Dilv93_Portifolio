@@ -99,7 +99,6 @@ class component extends React.Component {
                     <span className='word green'>designer.</span>
                     <span className='word yellow'>software.</span>
                 </DinamicTitleStyle>
-                <p style={{fontSize:'14px'}} className='lineStyle'>Em construção...</p>
             </PageContent>
         );
     };

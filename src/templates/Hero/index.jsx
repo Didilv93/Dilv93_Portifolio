@@ -4,8 +4,8 @@ import theme from '../../styles/theme';
 
 import Typography from './HeroTypography';
 import Canvas from './canvas';
-import Button from '../../utils/UI/Buttons/HeroScroll';
 import TypographyMotion from '../../utils/UI/Movement/Typography/index';
+import ScrollPage from '../../utils/UI/Scroll/scroll';
 
 const colors = theme.colors;
 
@@ -33,24 +33,34 @@ const ButtonStyle = styled.section`
   }
 `;
 export class Hero extends React.Component {
-  state = { minHeight: '100vh'}
+  constructor(props, context) {
+    super(props, context);
+    this.state = { minHeight: '100vh', enable: false}
+  }
   componentDidMount = () => {
     this.setState({
       minHeight: `${window.innerHeight}px` || '100vh',
     })
-    Canvas('ptCanvas');
     TypographyMotion();
+    Canvas('ptCanvas');
   }
-  render() {
 
+  changeState(){
+    // if (this.state.enable) this.setState({ enable: false });
+    // else this.setState({ enable: true });
+    this.setState({ enable: true });
+  }
+
+  render() {
     return (
       <StyledHero
         minHeight={this.state.minHeight}
         id='ptCanvas'
+        className='background'
       >
         <Typography/>
         <ButtonStyle className='scrollButonHero'>
-          <Button />
+          <ScrollPage />
         </ButtonStyle>
       </StyledHero>
     );

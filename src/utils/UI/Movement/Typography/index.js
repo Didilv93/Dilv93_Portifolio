@@ -4,6 +4,7 @@ import OpacityWords from './opacity';
 function ModeChoice () {
 
   const ButonHero = document.getElementsByClassName('scrollButonHero');
+  
   setTimeout(function() {
     ButonHero[0].style.opacity = 1;
   }, 5000);
