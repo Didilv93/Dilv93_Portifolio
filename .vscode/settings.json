@@ -6,4 +6,5 @@
   "scss.lint.zeroUnits": "warning",
   "scss.lint.universalSelector": "warning",
   "scss.lint.unknownVendorSpecificProperties": "warning",
+  "git.ignoreLimitWarning": true,
 }

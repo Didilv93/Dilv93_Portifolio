@@ -2,8 +2,8 @@ import * as React from 'react';
 import Helmet from 'react-helmet';
 import { graphql, StaticQuery } from 'gatsby';
 
-import '../styles/sass/main.sass';
 import favicon from '../images/favicon-md.png';
+import '../styles/sass/main.sass';
 
 const LayoutBasis = ({ children }: any) => (
   <StaticQuery

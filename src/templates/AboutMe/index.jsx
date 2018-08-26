@@ -3,12 +3,12 @@ import styled, { css } from 'styled-components';
 
 import theme from '../../styles/theme';
 import Image from '../../images/profile/IMG.png';
+import TimeLine from './teste';
 
 const colors = theme.colors;
 
 const StyledAboutSection = styled.section`
-  background-color: ${colors.primary};
-  background-image: linear-gradient(${colors.primary}, rgb(0,0,30));
+  background-color: ${colors.white};
   ${(props) => {
   const { minHeight } = props;
     return css`
@@ -23,6 +23,51 @@ const Content = styled.div`
     margin: auto;
     display: flex;
     flex-direction: column;
+    @keyframes widthExpansion {
+      0% {
+        width: 0px;
+      }
+      100% {
+        width: 222.5px;
+      }
+    }
+    .margin {
+      z-index: 0;
+      background-color: #362e5c;
+      width: 222.5px;
+      height: 20px;
+      margin: auto;
+      margin-top: -15px;
+      animation-name: widthExpansion;
+      animation-duration: 1.5s;
+      animation-timing-function: ease;
+    }
+`;
+
+const Title = styled.div`
+  background-color: ${colors.white};
+  max-height: 60px;
+  margin: auto;
+  margin-top: 1rem;
+  z-index: 1;
+  h1 {
+    font-size: 40px;
+    padding: 0px;
+    margin: 5px;
+  }
+`;
+
+const Profile = styled.div`
+  margin: 3rem 3rem 0px 0px;
+  display: flex;
+  flex-direction: row;
+  img {
+    max-width: 400px;
+    max-height: 400px;
+  }
+  p {
+    color: #362e5c;
+  }
 `;
 
 export class AboutSection extends React.Component {
@@ -52,9 +97,16 @@ export class AboutSection extends React.Component {
       <StyledAboutSection
         minHeight={this.state.minHeight}
       >
+        <TimeLine />
         <Content>
-          <h1>Sobre mim</h1>
-          <p>Texto de descrição</p>
+          <Title>
+            <h1>Sobre mim</h1>
+          </Title>
+          <div className='margin' />
+          <Profile>
+            <img src={Image} alt='Foto'/>
+            <p>Nunca antes tivemos tantas transformações revolucionárias em um período de tempo tão curto, essa condição é instigante. Me sinto privilegiado por fazer parte dessa geração, com tantas possibilidades tecnológicas, tanto potencial! Desejo um legado tecnológico, ser protagonista das próximas transformações revolucionárias que vamos enfrentar e com elas co-criar um futuro melhor.</p>
+          </Profile>
         </Content>
       </StyledAboutSection>
     );

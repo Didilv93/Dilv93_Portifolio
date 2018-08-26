@@ -1,8 +1,5 @@
 import {CanvasSpace, Line, Pt, Group} from 'pts';
 
-import theme from '../../styles/theme';
-
-const colors = theme.colors;
 const galaxyStyle = {
   brightWhite: 'rgba(255,255,255,',
   brightBlue: 'rgba(0,50,204,',
