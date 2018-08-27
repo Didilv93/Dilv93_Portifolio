@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 
 import theme from '../../styles/theme';
 import Image from '../../images/profile/IMG.png';
-import TimeLine from './teste';
+// import TimeLine from './teste';
 
 const colors = theme.colors;
 
@@ -20,9 +20,9 @@ const StyledAboutSection = styled.section`
 `;
 
 const Content = styled.div`
-    margin: auto;
     display: flex;
     flex-direction: column;
+    align-items: center;
     @keyframes widthExpansion {
       0% {
         width: 0px;
@@ -58,15 +58,17 @@ const Title = styled.div`
 `;
 
 const Profile = styled.div`
-  margin: 3rem 3rem 0px 0px;
+  margin-top: 3rem;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   img {
     max-width: 400px;
     max-height: 400px;
+    margin: 0px;
   }
-  p {
+  span {
     color: #362e5c;
+    margin: auto;
   }
 `;
 
@@ -97,7 +99,7 @@ export class AboutSection extends React.Component {
       <StyledAboutSection
         minHeight={this.state.minHeight}
       >
-        <TimeLine />
+        {/* <TimeLine /> */}
         <Content>
           <Title>
             <h1>Sobre mim</h1>
@@ -105,7 +107,7 @@ export class AboutSection extends React.Component {
           <div className='margin' />
           <Profile>
             <img src={Image} alt='Foto'/>
-            <p>Nunca antes tivemos tantas transformações revolucionárias em um período de tempo tão curto, essa condição é instigante. Me sinto privilegiado por fazer parte dessa geração, com tantas possibilidades tecnológicas, tanto potencial! Desejo um legado tecnológico, ser protagonista das próximas transformações revolucionárias que vamos enfrentar e com elas co-criar um futuro melhor.</p>
+            <span>site em construção...</span>
           </Profile>
         </Content>
       </StyledAboutSection>
