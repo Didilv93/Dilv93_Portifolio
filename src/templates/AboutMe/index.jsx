@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 import theme from '../../styles/theme';
-import Image from '../../images/profile/IMG.png';
+// import Image from '../../images/profile/IMG.png';
 // import TimeLine from './teste';
 
 const colors = theme.colors;
@@ -102,11 +102,11 @@ export class AboutSection extends React.Component {
         {/* <TimeLine /> */}
         <Content>
           <Title>
-            <h1>Sobre mim</h1>
+            {/* <h1>Sobre mim</h1> */}
           </Title>
-          <div className='margin' />
+          {/* <div className='margin' /> */}
           <Profile>
-            <img src={Image} alt='Foto'/>
+            {/* <img src={Image} alt='Foto'/> */}
             <span>site em construção...</span>
           </Profile>
         </Content>
