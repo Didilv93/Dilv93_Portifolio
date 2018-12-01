@@ -1,4 +1,4 @@
-import {CanvasSpace, Line, Pt, Group} from 'pts';
+import {CanvasSpace, Line, Pt, Group, Create} from 'pts';
 
 const galaxyStyle = {
   brightWhite: 'rgba(255,255,255,',
@@ -13,6 +13,8 @@ export function App (ID) {
     let space = new CanvasSpace('#' + ID).setup({bgcolor: 'transparent', resize: true, retina: true});
     let form = space.getForm();
 
+    let pts = new Group();
+
     //// Demo code ---
 
     let pairs = [];
@@ -22,18 +24,16 @@ export function App (ID) {
     space.add({
 
       start:() => {
+        pts = Create.distributeRandom( space.innerBound, 200 );
         let r = space.size.minValue().value;
-
-        // create 200 lines
-        for (let i=0; i<200; i++) {
+        pts.forEach( (p, i) => {
           let ln = new Group( Pt.make(2, r, true), new Pt(0,0));
           ln.moveBy( space.center ).rotate2D( i*Math.PI/100, space.center );
-          pairs.push(ln );
-        }
+          pairs.push(ln);
+        });
       },
       animate: (time, ftime) => {
-        for (let i=0, len=pairs.length; i<len; i++) {
-          // rotate each line by 0.1 degree and check collinearity with pointer
+        pts.forEach( (p, i) => {
           let ln = pairs[i];
           ln.rotate2D( 5*i/1000000, space.center );
           let collinear = Line.collinear( ln[0], ln[1], space.pointer, 10);
@@ -51,7 +51,7 @@ export function App (ID) {
             form.stroke( (side > 0) ? galaxyStyle.brightWhite + brightness +')' : galaxyStyle.brightBlue + brightness +')').line( ln );
           }
           form.fillOnly(galaxyStyle.brightStars + 0.8 + ')').points( ln, 0.5);
-        }
+        });
       }
     });
     space.bindMouse().bindTouch().play();

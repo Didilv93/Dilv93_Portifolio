@@ -36,20 +36,23 @@ const ButtonStyle = styled.section`
 export class Hero extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.state = { minHeight: '100vh', enable: false}
+    this.state = { minHeight: '100vh', enable: false };
+    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
   componentDidMount = () => {
-    this.setState({
-      minHeight: `${window.innerHeight}px` || '100vh',
-    })
+    window.addEventListener('resize', this.updateWindowDimensions);
+
     TypographyMotion();
     Canvas('ptCanvas');
   }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateWindowDimensions);
+  }
 
-  changeState(){
-    // if (this.state.enable) this.setState({ enable: false });
-    // else this.setState({ enable: true });
-    this.setState({ enable: true });
+  updateWindowDimensions() {
+    this.setState({
+      minHeight: `${window.innerHeight}px` || '100vh',
+    })
   }
 
   render() {

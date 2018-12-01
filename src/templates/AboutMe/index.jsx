@@ -68,7 +68,6 @@ const Profile = styled.div`
   }
   span {
     color: #362e5c;
-    margin: auto;
   }
 `;
 
